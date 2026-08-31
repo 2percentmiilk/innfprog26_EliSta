@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheet Variabler</title>
+</head> 
+<body>
+    <h1>Variabler i JavaScript</h1>
+    <p>Hei, <span id="name"></span> (<span id="age">?</span> år)</p>
+
+    <!-- JavaScript endrer på ting i html
+            HTML leses proceedurally, derfor burde JavaScript stå etter html koden-->
+    <script>
+        //DEKLARERE KONSTANT FOR NAVN  (kommentarer på denne måten brytes på hver linje)
+
+        /* kommentarer på denne måten kan skrives på flere linjer, og må lukkes
+
+         * const: deklarere en verdi som ikke skal endres
+         * let: deklarere en verdi som kan endres
+        */
+       const firstname = "Allie" //JavaScript forstår at å bryte en linje betyr ny kode
+       console.log(firstname)
+       const lastname = "Beastmode"
+       //skriv ut firstname-verdi til HTML-element med id name:
+       //Vi bruker konkatinering, som slår sammen variabler og tekst, for å skrive fornavn + etternavn
+       
+       document.getElementById("name").innerHTML = firstname + " " + lastname
+       /* bruker punktum for å koble en egenskap
+       getElementById henter frem all HTML-koden med id-navnet "name" og plasserer variabelet fra JavaScript, dette overskriver HTML-koden
+       */
+
+       //DEKLARERE EN VARIABEL FOR ALDER
+       const birthyear = 2004
+       let age = 2026 - birthyear //"age" er nå et variabel som har lov til å endre seg, og er et regnet ut mattestykke
+       document.getElementById("age").innerHTML = age
+    </script>
+    
+</body>
+</html>
