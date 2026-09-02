@@ -9,6 +9,14 @@
     <h1>Variabler i JavaScript</h1>
     <p>Hei, <span id="name"></span> (<span id="age">?</span> år)</p>
 
+    <h2>Handlekurv</h2>
+    <ul>
+        <li>Antall produkter: <span id="quantity">0</span></li>
+        <li>Pris <span id="price">0</span>kr</li> <!-- hold nummer og tekst hver for seg i HTML for at JavaScript ikke krøller det til-->
+        <li>Total <span id="total">0</span>kr</li>
+
+    </ul>
+
     <!-- JavaScript endrer på ting i html
             HTML leses proceedurally, derfor burde JavaScript stå etter html koden-->
     <script>
@@ -34,6 +42,15 @@
        const birthyear = 2004
        let age = 2026 - birthyear //"age" er nå et variabel som har lov til å endre seg, og er et regnet ut mattestykke
        document.getElementById("age").innerHTML = age
+
+       //FORBEDRE HANDLEKURV
+       let itemAmount = 3
+       const itemPrice = 300
+       let totalAmount = itemAmount * itemPrice
+       document.getElementById("quantity").innerHTML = itemAmount 
+       document.getElementById("price").innerHTML = itemPrice
+       document.getElementById("total").innerHTML = totalAmount
+      
     </script>
     
 </body>
