@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Assignments</title>
+</head>
+<body>
+    <p><span id="melding"></span></p>
+    <p id="average"></p>
+    <script>
+        const user_name = "Allie"
+        const user_birthyear = 2004
+        const age = 2026 - 2004
+        const utskrift = "Hei" + " " + user_name + "(" + age + ")"
+        document.getElementById("melding").innerHTML = utskrift
+
+        const dad_age = 37
+        const mom_age = 32
+        const girl_age = 7
+        const boy_age = 2
+        const totalAge = dad_age + mom_age + girl_age + boy_age
+        const averageAge = totalAge / 4
+        document.getElementById("average").innerHTML = "Average age på familien er" + " " + averageAge
+    </script>
+</body>
+</html>

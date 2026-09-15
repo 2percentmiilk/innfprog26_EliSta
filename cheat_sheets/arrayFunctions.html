@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheet for ArrayFunctions</title>
+</head>
+<body>
+    <h1>Array Functions</h1>
+    <p>Vi finner antall i en array ved å bruke .length: <span id="arrayCount"></span></p>
+    <h2>Vi har 2 måter å skrive ut en array på:</h2>
+    <p>.toString(): <span id="toStringSpan"></span></h2>
+    <p>.join(): <span id="joinSpan"></span></p>
+
+    <h2>Array etter slettemetoder er kjørt</h2>
+    <p id="deleted"></p>
+
+    <script>
+        const books = [
+            "Silver Eyes",
+            "Olebrom",
+            "Fourth Wing",
+            "Bibelen",
+            "Nålen",
+            "Jævla drittsystem",
+            "Don't make me think",
+            "Twisted ones",
+            "Hunger games",
+            "Surrounded by idiots"
+        ]
+
+        document.getElementById("arrayCount").innerHTML = books.length
+
+        //LEGGE TIL ELEMENTER I ARRAYEN
+        //.push(element): Legger inn element på slutten av arrayen
+        books.push("LOTR: Fellowship of the Ring")
+        //.unshift(element): Legger inn element i starten av arrayen, og forskyver indexer! Det betyr at [0] blir [1], etc.
+        books.unshift("LOTS: Two Towers")
+        //.splice(startindex, number of elements modified, element(s)): Legger elements inni arrays, eller sletter arrays, forskyver også indexer! 
+        //startindex: hvilken index vi starter å manipulere arrayen på
+        //number of elements mofified: hvis vi skal slette elementer, hvor mange fra og med startindex
+        //Eks. Hvis startindex er 2, og antall elementer er 2, slettes index 2 og 3. Når vi legger til elementer skal number of elements morified være 0  
+        books.splice(5, 0, "LOTR: Return of the King")
+
+        //LEGGE SAMMEN ELEMENTER I ARRAYEN
+        //.toString(): skriver ut en kommaseparert liste av en array
+        //.toString en metode (altså funksjonalitet) og trenger parantes
+        document.getElementById("toStringSpan").innerHTML = books.toString() 
+        //.join(param): skriver ut alle elementene i en array, separert av hva som står inne i (), i dette tilfelle (param)
+        document.getElementById("joinSpan").innerHTML = books.join(", ")
+
+         //FJERNE ELEMENTER I ARRAYEN
+         //.pop(): Sletter siste elementet i arrayen
+         books.pop()
+         //.shift(): Sletter det første elementet i arrayn, og flytter indexen!
+         books. shift()
+         //.splice(startindex, number og elements to delete)
+         //books.splice(4, 1) - dette sletter bok nr 5 i arrayen
+
+         //indexOf(param): Finner det første elementet i arrayen som matcher parameteren param, og retunerer indexen
+         const indexFound = books.indexOf("LOTR: Return of the King") 
+         console.log("Index til LOTR-bok:", indexFound) //displayer indexen funnet i console
+         books.splice(indexFound, 1) //sletter elemented "LOTR: Return of the King" i arrayen, ved å hente frem indexen til dette elementet
+         //Hvis elementet vi forsøker å finne indexen til ikke finnes, returnerer indexOf -1
+
+         //Hvordan skjekke om en verdi finnes i en array: 
+         const bookExists = books.includes("Fourth Wing")
+         console.log("Finnes Fourth Wing?", bookExists) 
+         //Hvis 
+
+         document.getElementById("deleted").innerHTML = books.join(", ") //displaye arrayen med de elementene som har blitt slettet
+    </script>
+</body>
+</html>
