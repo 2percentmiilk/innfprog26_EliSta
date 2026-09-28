@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheet for Array.map</title>
+</head>
+<body>
+    <h2>Bøker</h2>
+    <ul id="books">
+        <li>Ingen bøker registrert enda</li>
+    </ul>
+    <script>
+        const books = ["Forth wing", "Silver eyes", "Harry potter"]
+        books.sort()
+
+        //Vi bruker map, som lagrer hver tittel i const book og legger denne til <ul> med id books:
+        books.map(book => { document.getElementById("books").innerHTML += `<li>` + books `</li>` } )
+    </script>
+</body>
+</html>

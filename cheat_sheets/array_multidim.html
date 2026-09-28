@@ -4,18 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Array Cheat Sheet: Multidimentional Array</title>
+
+    <style>
+        #books, #longreads {
+            display: flex;
+            gap: .5rem; 
+        }
+
+        article{
+            border: 1px solid black;
+            background: rgb(232, 231, 231);
+            padding: 1rem;
+            box-sizing: border-box;
+            width: 33%;
+        }
+    </style>
 </head>
 <body>
     <h2>Referansetest</h2>
     <p>Henter tittel på bok 3: <span id="book3Title"></span></p>
     <p>Henter forfatter 2 på bok 2: <span id="book2Author2"></span></p>
+    
+    <h2>Bokregister</h2>
+    <section id="books">
+        <p>Laster inn bøker...</p>
+    </section>
+    <h2>Langlesing</h2>
+    <section id="longreads">
+        <p>Laster inn bøker...</p>
+    </section>
     <script>
         const bokregister = [
             {
                 title: "Fourth Wing",
                 author: ["Rebecca Yarres"],
                 pagecount: 512, 
-                isbn: 9783423442206
+                isbn: 9780349437019
             },
             {
                 title: "Silver Eyes",
@@ -35,6 +59,38 @@
 
         document.getElementById("book3Title").innerHTML = bokregister[2].title
         document.getElementById("book2Author2").innerHTML = bokregister[1].author.join(", ") 
+
+        //Bruker .map for å hente alle bøker, og bygger HTML i booksHTML-variabelen
+        let booksHTML = ""
+        bokregister.map(b => { booksHTML += 
+            `<article>
+                <h3>${b.title}</h3>
+                <image src="https://covers.openlibrary.org/b/isbn/${b.isbn}-L.jpg?default=false"/>
+                <p class="isbnNr">${b.isbn}</p>
+                <p>${b.author.length === 1 ? "Forfatter" : "Forfattere"}: ${b.author.join(", ")}</p>
+                <p>Sidetall: ${b.pagecount}</p>
+            </article>`
+            }) //`` fungerer som en konkatinering som gjør at js ikke leser hver linje som forskjellig kode
+
+        //Bruker .filter for å filtrere ut bøker med mer enn 400 sider
+        let longreadsHTML = ""
+        const longreads = bokregister.filter(l => l.pagecount >= 400)    
+        const authorPlural = bokregister.filter(a => a.author.length > 1)
+        longreads.map(l => { 
+            longreadsHTML += 
+            `<article>
+                <h3>${l.title}</h3>
+                <image src="https://covers.openlibrary.org/b/isbn/${l.isbn}-L.jpg?default=false"/>
+                <p class="isbnNr">${l.isbn}</p>
+                <p>${l.author.length === 1 ? "Forfatter" : "Forfattere"}: ${l.author.join(", ")}</p>
+                <p>Sidetall: ${l.pagecount}</p>
+            </article>`
+        })
+        document.getElementById("longreads").innerHTML = longreadsHTML
+
+        console.log("Longreads: ", longreads)
+        console.log("Books with 2+ Authors:", authorPlural)
+        document.getElementById("books").innerHTML = booksHTML
     </script>
 </body>
 </html>
